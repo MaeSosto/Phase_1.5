@@ -1,8 +1,8 @@
-
-
+#include <p15test_rikaya_v0.h>
 #include "src/support/libumps/libumps.h"
 #include "umps/arch.h"
 #include "src/support/libumps/types.h"
+
 
 void main	(int argc, char * argv[]){
 
@@ -18,28 +18,29 @@ void main	(int argc, char * argv[]){
         Interrupt Old Area
     */
 
+
     /*Inizializzare il PC all’indirizzo dell’handler del nucleo che gestisce quell’eccezione.
-        Cause is a CP0 register containing information about the current exception and/or 
+        Cause is a CP0 register containing information about the current exception and/or
         pending device interrupts.
     */
-    
-    /*Inizializzare $SP a RAMPTOP
-        The function _start(), whose code can be found in the file CRTSO.S, sets the $SP to RAMTOP
-         (stacks in μMPS2 grow “downward” from high memory to low memory), and calls main()
-    */
+   
+
+
+    /*Inizializzare $SP a RAMPTOP*/
+   
 
     /*Inizializzare il registro di status:
-        - mascherare interrupt
-        - disabilitare virtual memory
+        - mascherare interrupt Status.IEc=0
+        - disabilitare virtual memory Status.VMc=0
         - settare kernel mode ON
-        - abilitare un timer 
+        - abilitare un timer Status.TE=1 & Timer=0x0000.0000
     */
 
     /*Inizializzare strutture dati di Phase1*/
-    initPcbs();
+    //initPcbs();
 
     /*Inizializzare variabili del kernel:*/
-    LIST_HEAD(ready_queue);
+   // LIST_HEAD(ready_queue);
 
     /*Instanziare il PCB e lo stato dei 3 processi di test
         - Interrupt abilitati
