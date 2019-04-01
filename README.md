@@ -1,2 +1,2 @@
-# Phase_1.5
+# PKaya Operating System
 Fase 1.5 di SO
