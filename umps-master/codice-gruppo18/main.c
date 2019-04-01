@@ -3,11 +3,27 @@
 
 void main	(int argc, char * argv[]){
 
-
     /*POPOLAZIONE DELLE NEW AREAS*/
-    /*Inizializzare il PC all’indirizzo dell’handler del nucleo che gestisce quell’eccezione.*/
+    /*AREE DA POPOLARE:
+        SYS/BP New Area
+        SYS/BP Old Area
+        Trap New Area
+        Trap Old Area
+        TLB New Area
+        TLB Old Area
+        Interrupt New Area
+        Interrupt Old Area
+    */
+
+    /*Inizializzare il PC all’indirizzo dell’handler del nucleo che gestisce quell’eccezione.
+        Cause is a CP0 register containing information about the current exception and/or 
+        pending device interrupts.
+    */
     
-    /*Inizializzare $SP a RAMPTOP*/
+    /*Inizializzare $SP a RAMPTOP
+        The function _start(), whose code can be found in the file CRTSO.S, sets the $SP to RAMTOP
+         (stacks in μMPS2 grow “downward” from high memory to low memory), and calls main()
+    */
 
     /*Inizializzare il registro di status:
         - mascherare interrupt
