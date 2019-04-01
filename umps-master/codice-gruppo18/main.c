@@ -1,5 +1,8 @@
-#include "p15test_rikaya_v0.h"
 
+
+#include "src/support/libumps/libumps.h"
+#include "umps/arch.h"
+#include "src/support/libumps/types.h"
 
 void main	(int argc, char * argv[]){
 
