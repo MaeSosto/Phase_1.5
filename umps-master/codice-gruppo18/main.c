@@ -1,11 +1,39 @@
 #include <p15test_rikaya_v0.h>
-#include "src/support/libumps/libumps.h"
-#include "umps/arch.h"
-#include "src/support/libumps/types.h"
+#include "const.h"
+#include "listx.h"
+#include <umps/libumps.h>
 
+#include "pcb.h"
 
 void main	(int argc, char * argv[]){
 
+    addokbuf("index: ");
+    addokbuf(getINDEX);
+    addokbuf("\n");
+    addokbuf("random: ");
+    addokbuf(getRANDOM);
+    addokbuf("\n");
+    addokbuf("entrylo: ");
+    addokbuf(getENTRYLO);
+    addokbuf("\n");
+    addokbuf("entryhi: ");
+    addokbuf(getENTRYHI);
+    addokbuf("\n");
+    addokbuf("status: ");
+    addokbuf(getSTATUS);
+    addokbuf("\n");
+    addokbuf("cause: ");
+    addokbuf(getCAUSE);
+    addokbuf("\n");
+    addokbuf("epc: ");
+    addokbuf(getEPC);
+    addokbuf("\n");
+    addokbuf("prid: ");
+    addokbuf(getPRID);
+    addokbuf("\n");
+    addokbuf("timer: ");
+    addokbuf(getTIMER);
+    addokbuf("\n");
     /*POPOLAZIONE DELLE NEW AREAS*/
     /*AREE DA POPOLARE:
         SYS/BP New Area
