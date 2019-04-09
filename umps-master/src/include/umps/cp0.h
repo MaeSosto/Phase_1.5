@@ -16,7 +16,7 @@
 #define CP0_PRID      15
 
 /*
- * CP0 Status fields
+ * CP0 Status fields -->PAG 62 princOfOperations
  */
 #define STATUS_IEc       0x00000001
 #define STATUS_IEc_BIT   0

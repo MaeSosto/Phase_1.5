@@ -51,9 +51,9 @@ typedef struct devregarea {
 /* Processor state */
 typedef struct state {
     unsigned int entry_hi;
-    unsigned int cause;
-    unsigned int status;
-    unsigned int pc_epc;
+    unsigned int cause;     //pag 27
+    unsigned int status;    //stati delle new area
+    unsigned int pc_epc;    /*program counter old area*/
     unsigned int gpr[STATE_GPR_LEN];
     unsigned int hi;
     unsigned int lo;
@@ -85,7 +85,7 @@ typedef struct state {
 #define reg_t8  gpr[23]
 #define reg_t9  gpr[24]
 #define reg_gp  gpr[25]
-#define reg_sp  gpr[26]
+#define reg_sp  gpr[26]     /*REGISTRO SP*/
 #define reg_fp  gpr[27]
 #define reg_ra  gpr[28]
 #define reg_HI  gpr[29]
