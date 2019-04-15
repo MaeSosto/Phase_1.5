@@ -5,29 +5,9 @@
 #include "types.h"
 
 #include "pcb.h"
-int TIME_SLICE //pizza
 
-void scheduler(list_head testa){
-    if(!emptyProcQ(testa)){ //se la lista non è vuota prendo il processo con priorità più alta
-    pcb_t* proc= removeProcQ(); //PRENDO IL PRIMO PROCESSO IN LISTA
+#define TIME_SLICE = 3000      //3 millisecondi
 
-    
-    //carico le info del processo nella cpu
-    
-    content_switch(proc, testa);
-    
-    }
-    
-}
-
-
-void content_switch(pcb_t* proc, testa){
-    //setta il time slice
-    
-    //log dei content switch
-    log_process_order(proc->original_priority);
-    aging(proc, testa);
-}
 
 //passo l'ultimo processo preso a carico dallo scheduler
 void aging(pcb_t* proc, list_head testa){
@@ -41,3 +21,24 @@ void aging(pcb_t* proc, list_head testa){
         temp = temp->p_next;
     }
 }
+
+
+void scheduler(list_head testa){
+    if(!emptyProcQ(testa)){ //se la lista non è vuota prendo il processo con priorità più alta
+    pcb_t* proc= removeProcQ(); //PRENDO IL PRIMO PROCESSO IN LISTA
+
+    setTimer(TIME_SLICE); // setTimer() - ogni ciclo di clock viene decrementato fino a 0 ove verrà lanciato un interrupt
+    content_switch(proc, testa);
+    
+
+
+
+    //carico le info del processo nella cpu
+
+    //log dei content switch
+    log_process_order(proc->original_priority);    
+
+    aging(proc, testa);
+    }
+}
+

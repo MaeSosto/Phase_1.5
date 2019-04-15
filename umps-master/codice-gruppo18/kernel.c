@@ -105,12 +105,13 @@ void main	(int argc, char * argv[]){
         tmp->original_priority=i;
         tmp->priority=i;
         tmp->p_s->reg[26]=RAMTOP-FRAMESIZE*i
-        tmp->p_s->pc_epc=(memaddr) testn //pizza non so - forse va messo l'indirizzo delle funzioni test 1 2 e 3 in test15rikaya
-        //aggiornare i valori dentro al pcb (tipo priorità etc.)
+        
+        if(i==1)  tmp->p_s->pc_epc=(memaddr) test1;
+        if(i==2)  tmp->p_s->pc_epc=(memaddr) test2;
+        if(i==3)  tmp->p_s->pc_epc=(memaddr) test3;
+
         if(tmp != NULL)
             insertProcQ(ready_queue, tmp);      //&, puntatori eh? pizza
-
-        
     }
 
 
