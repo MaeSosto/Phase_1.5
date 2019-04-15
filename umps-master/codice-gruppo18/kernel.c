@@ -4,6 +4,7 @@
 #include <umps/libumps.h>
 #include "types.h"
 
+
 #include "pcb.h"
 #define SYSCALL_NEWAREA 0x200003D4
 #define TRAP_NEWAREA 0x200002BC
@@ -107,7 +108,9 @@ void main	(int argc, char * argv[]){
         tmp->p_s->pc_epc=(memaddr) testn //pizza non so - forse va messo l'indirizzo delle funzioni test 1 2 e 3 in test15rikaya
         //aggiornare i valori dentro al pcb (tipo priorità etc.)
         if(tmp != NULL)
-            insertProcQ(ready_queue, tmp);      //&, puntatori eh?
+            insertProcQ(ready_queue, tmp);      //&, puntatori eh? pizza
+
+        
     }
 
 
