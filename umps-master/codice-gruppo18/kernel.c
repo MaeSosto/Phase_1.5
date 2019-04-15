@@ -60,7 +60,7 @@ void main	(int argc, char * argv[]){
     tmp_status->status= AND(tmp_status->status.getStatus,11111110111111111111111111111100);
     tmp_status->status= OR(tmp_status->status.getStatus,00001000000000000000000000000000);
     tmp_status->reg[26]=RAMTOP;
-    tmp_status->pc_epc= //pizza
+    tmp_status->pc_epc= interrupt_handler();
 
     //void INITCPU(uint32_t cpuid, state_t *start_state, state_t *state_areas);
 
@@ -115,23 +115,11 @@ void main	(int argc, char * argv[]){
     }
 
 
+    //PRENDO IL PRIMO PROCESSO IN CODA E LO CARICO NEL PROCESSORE
+    pcb_t* proc= removeProcQ();
+    //funzione che carica il proc nella cpu
 
-
-    
-
-    /*Inseririre i processi nella Ready Queue*/
-    /*Log dei context switch: per verificare che i
-processi vengano alternati correttamente, ogni
-volta che si verifica un context switch dovete
-chiamare la funzione log_process_order
-passando come parametro la priorita’ originale
-del processo.*/
-    //per settare il time_slice bisogna abilitare il local timer (dovremmo aver fatto su) e usare la setTIMER(unsigned int a);
-/*
-    The processor starts executing at the location specified by the BootPC register,
-    with the processor’s $SP register set to the value provided by the BootSP register.
-
-*/
+    //settare il timer
 
 
 
