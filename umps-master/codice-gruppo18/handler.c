@@ -7,10 +7,10 @@
 void interrupt_handler(){
     
     //resetto il timer
-
+	setTIMER(3000);
     //log dei content switch
     log_process_order(proc->original_priority);    
-
+	
     
     //FASE DI AGING PIZZA
     proc->priority = proc->original_priority;
