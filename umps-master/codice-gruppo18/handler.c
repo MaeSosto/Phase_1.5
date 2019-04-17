@@ -12,10 +12,7 @@ void interrupt_handler(){
     //log dei content switch -> (int process) fa riferimento al numero del test
     log_process_order(proc->original_priority);    
 
-    //FASE DI AGING PIZZA
-    proc->priority = proc->original_priority;
-    insertProcQ(testa, proc);
-    
+    //FASE DI AGING 
     /*modifico la priorità*/
     pcb_t* temp = testa->p_next;
     while(temp->p_next != NULL){
@@ -23,11 +20,14 @@ void interrupt_handler(){
         temp = temp->p_next;
     }
 
+    proc->priority = proc->original_priority;
+    insertProcQ(testa, proc);
+
 
     pcb_t* proc= removeProcQ();
     PROCESSO_ATTIVO=proc;
-    setSTATUS();
-    LDST(); 
+    setTIMER(TIME_SLICE);
+    LDST(proc->p_s); 
 
      //resetto il timer
 	setTIMER(3000);
@@ -35,11 +35,12 @@ void interrupt_handler(){
 
 void systemcall_handler(){
     //Cause.ExcCode (SYS=8, BP=9)
+    proc=PROCESSO_ATTIVO;
+    testa=QUEUE;
 
-
-
-
-    
+    if(proc->p_s.cause==8){ //SYS
+        outProcQ(proc);
+    }
 }
 
 void tlb_handler(){

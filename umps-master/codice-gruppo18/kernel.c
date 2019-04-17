@@ -77,9 +77,7 @@ void main	(int argc, char * argv[]){
     //PRENDO IL PRIMO PROCESSO IN CODA E LO CARICO NEL PROCESSORE
     pcb_t* proc= removeProcQ();
     PROCESSO_ATTIVO=proc;
-    setSTATUS();
     setTIMER(TIME_SLICE);
-
     LDST(proc->p_s);    //carichiamo le info del processo che voglio eseguire dentro il processore
 
     
