@@ -16,6 +16,7 @@ void interrupt_handler(){
     proc->priority = proc->original_priority;
     insertProcQ(testa, proc);
     
+    /*modifico la priorità*/
     pcb_t* temp = testa->p_next;
     while(temp->p_next != NULL){
         temp->priority = (temp->priority + 1);

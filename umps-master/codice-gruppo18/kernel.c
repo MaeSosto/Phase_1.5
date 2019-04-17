@@ -38,6 +38,7 @@ void main	(int argc, char * argv[]){
         - abilitare un timer Status.TE=1 & Timer=0x0000.0000
     */
 
+    /*popolazione delle NEW AREAS*/
     state_t* tmp_status= (struct state) SYSCALL_NEWAREA
     tmp_status->status= AND(tmp_status->status.getStatus,11111110111111111111111111111100);
     tmp_status->status= OR(tmp_status->status.getStatus,00001000000000000000000000000000);
@@ -69,8 +70,9 @@ void main	(int argc, char * argv[]){
     initPcbs(); //inizializziamo la pcbFree
     
 
-    
     /*Inizializzare variabili del kernel:*/
+
+    /*creiamo la testa della lista dei processi*/
     struct list_head ready_queue;
     LIST_HEAD(ready_queue);
 
@@ -87,6 +89,7 @@ void main	(int argc, char * argv[]){
     //tolgo pcb dalla pcbfree
     //aggiungo pcb a ready_queue
 
+    /*assegnamo i testn ai pcb*/
     for(int i=1; i<4; i=i+1){
         pcb_t* tmp = allocPcb();
 
@@ -120,7 +123,7 @@ void main	(int argc, char * argv[]){
     //funzione che carica il proc nella cpu
 
     //settare il timer
-
+    setTIMER(3000);
 
 
 }
