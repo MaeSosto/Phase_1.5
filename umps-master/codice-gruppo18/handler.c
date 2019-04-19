@@ -9,6 +9,7 @@ void interrupt_handler(){
     proc=PROCESSO_ATTIVO;
     testa=QUEUE;
 
+    
     //log dei content switch -> (int process) fa riferimento al numero del test
     log_process_order(proc->original_priority);    
 
@@ -39,7 +40,14 @@ void systemcall_handler(){
     testa=QUEUE;
 
     if(proc->p_s.cause==8){ //SYS
-        outProcQ(proc);
+        freePcb(proc);
+        pcb_t* proc= removeProcQ();
+        PROCESSO_ATTIVO=proc;
+        setTIMER(TIME_SLICE);
+        LDST(proc->p_s); 
+
+        //resetto il timer
+        setTIMER(3000);
     }
 }
 
