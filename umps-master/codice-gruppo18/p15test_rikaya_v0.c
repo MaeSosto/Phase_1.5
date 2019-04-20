@@ -1,9 +1,8 @@
-#include "const.h"
-#include "listx.h"
+#include "include/const.h"
+#include "include/listx.h"
 #include <umps/libumps.h>
 #include <umps/arch.h>
-
-#include "pcb.h"
+#include "include/pcb.h"
 
 #define TRANSMITTED 5
 #define TRANSTATUS 2

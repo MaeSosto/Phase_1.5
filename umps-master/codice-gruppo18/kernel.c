@@ -1,9 +1,9 @@
-#include "p15test_rikaya_v0.h"
-#include "const.h"
-#include "listx.h"
-#include "libumps.h"
-#include "types.h"
-#include "pcb.h"
+#include "include/p15test_rikaya_v0.h"
+#include "include/const.h"
+#include "include/listx.h"
+#include <umps/libumps.h>
+#include <umps/types.h>
+#include "include/pcb.h"
 #include "handler.c"
 
 #define SYSCALL_NEWAREA 0x200003D4

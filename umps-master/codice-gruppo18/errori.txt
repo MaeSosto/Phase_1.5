@@ -1,0 +1,191 @@
+marti@marti-VirtualBox:~/Scrivania/Phase_1.5-master/umps-master/codice-gruppo18$ mipsel-linux-gnu-gcc -ansi -mips1 -mfp32 -std=gnu11 -fno-stack-protector -I /usr/local/include/umps2 -c kernel.c
+In file included from kernel.c:7:
+handler.c: In function ‘interrupt_handler’:
+handler.c:9:5: error: ‘proc’ undeclared (first use in this function)
+     proc=PROCESSO_ATTIVO;
+     ^~~~
+handler.c:9:5: note: each undeclared identifier is reported only once for each function it appears in
+handler.c:9:10: error: ‘PROCESSO_ATTIVO’ undeclared (first use in this function)
+     proc=PROCESSO_ATTIVO;
+          ^~~~~~~~~~~~~~~
+handler.c:10:5: error: ‘testa’ undeclared (first use in this function); did you mean ‘test3’?
+     testa=QUEUE;
+     ^~~~~
+     test3
+handler.c:10:11: error: ‘QUEUE’ undeclared (first use in this function)
+     testa=QUEUE;
+           ^~~~~
+handler.c:19:24: error: invalid operands to binary != (have ‘struct list_head’ and ‘void *’)
+     while(temp->p_next != NULL){
+           ~~~~~~~~~~~~ ^~
+handler.c:21:14: error: incompatible types when assigning to type ‘pcb_t *’ {aka ‘struct pcb_t *’} from type ‘struct list_head’
+         temp = temp->p_next;
+              ^
+handler.c:28:18: error: too few arguments to function ‘removeProcQ’
+     pcb_t* proc= removeProcQ();
+                  ^~~~~~~~~~~
+In file included from kernel.c:6:
+include/pcb.h:17:8: note: declared here
+ pcb_t *removeProcQ(struct list_head *head);
+        ^~~~~~~~~~~
+In file included from kernel.c:7:
+handler.c:30:14: error: ‘TIME_SLICE’ undeclared (first use in this function)
+     setTIMER(TIME_SLICE);
+              ^~~~~~~~~~
+handler.c:31:14: error: incompatible type for argument 1 of ‘LDST’
+     LDST(proc->p_s);
+          ~~~~^~~~~
+In file included from kernel.c:4:
+/usr/local/include/umps2/umps/libumps.h:150:36: note: expected ‘void *’ but argument is of type ‘state_t’ {aka ‘struct state’}
+ extern unsigned int LDST(STATE_PTR statep);
+                                    ^
+In file included from kernel.c:7:
+handler.c: In function ‘systemcall_handler’:
+handler.c:39:5: error: ‘proc’ undeclared (first use in this function)
+     proc=PROCESSO_ATTIVO;
+     ^~~~
+handler.c:39:10: error: ‘PROCESSO_ATTIVO’ undeclared (first use in this function)
+     proc=PROCESSO_ATTIVO;
+          ^~~~~~~~~~~~~~~
+handler.c:40:5: error: ‘testa’ undeclared (first use in this function); did you mean ‘test3’?
+     testa=QUEUE;
+     ^~~~~
+     test3
+handler.c:40:11: error: ‘QUEUE’ undeclared (first use in this function)
+     testa=QUEUE;
+           ^~~~~
+handler.c:44:22: error: too few arguments to function ‘removeProcQ’
+         pcb_t* proc= removeProcQ();
+                      ^~~~~~~~~~~
+In file included from kernel.c:6:
+include/pcb.h:17:8: note: declared here
+ pcb_t *removeProcQ(struct list_head *head);
+        ^~~~~~~~~~~
+In file included from kernel.c:7:
+handler.c:46:18: error: ‘TIME_SLICE’ undeclared (first use in this function)
+         setTIMER(TIME_SLICE);
+                  ^~~~~~~~~~
+handler.c:47:18: error: incompatible type for argument 1 of ‘LDST’
+         LDST(proc->p_s);
+              ~~~~^~~~~
+In file included from kernel.c:4:
+/usr/local/include/umps2/umps/libumps.h:150:36: note: expected ‘void *’ but argument is of type ‘state_t’ {aka ‘struct state’}
+ extern unsigned int LDST(STATE_PTR statep);
+                                    ^
+kernel.c: In function ‘main’:
+kernel.c:23:5: error: conversion to non-scalar type requested
+     tmp_status->status= AND(tmp_status->status.getStatus,11111110111111111111111111111100);
+     ^~~~~~~~~~
+kernel.c:23:5: error: expected ‘,’ or ‘;’ before ‘tmp_status’
+kernel.c:23:58: warning: integer constant is too large for its type
+     tmp_status->status= AND(tmp_status->status.getStatus,11111110111111111111111111111100);
+                                                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel.c:24:5: error: ‘tmp_status’ undeclared (first use in this function)
+     tmp_status->status= OR(tmp_status->status.getStatus,00001000000000000000000000000000);
+     ^~~~~~~~~~
+kernel.c:24:25: warning: implicit declaration of function ‘OR’; did you mean ‘CR’? [-Wimplicit-function-declaration]
+     tmp_status->status= OR(tmp_status->status.getStatus,00001000000000000000000000000000);
+                         ^~
+                         CR
+kernel.c:24:57: warning: integer constant is too large for its type
+     tmp_status->status= OR(tmp_status->status.getStatus,00001000000000000000000000000000);
+                                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel.c:25:25: error: ‘RAMTOP’ undeclared (first use in this function)
+     tmp_status->reg[26]=RAMTOP;
+                         ^~~~~~
+kernel.c:29:5: error: conversion to non-scalar type requested
+     tmp_status->status= AND(tmp_status->status.getStatus,11111110111111111111111111111100);
+     ^~~~~~~~~~
+kernel.c:29:5: error: expected ‘,’ or ‘;’ before ‘tmp_status’
+kernel.c:29:58: warning: integer constant is too large for its type
+     tmp_status->status= AND(tmp_status->status.getStatus,11111110111111111111111111111100);
+                                                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel.c:30:57: warning: integer constant is too large for its type
+     tmp_status->status= OR(tmp_status->status.getStatus,00001000000000000000000000000000);
+                                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel.c:35:5: error: conversion to non-scalar type requested
+     tmp_status->status= AND(tmp_status->status.getStatus,11111110111111111111111111111100);
+     ^~~~~~~~~~
+kernel.c:35:5: error: expected ‘,’ or ‘;’ before ‘tmp_status’
+kernel.c:35:58: warning: integer constant is too large for its type
+     tmp_status->status= AND(tmp_status->status.getStatus,11111110111111111111111111111100);
+                                                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel.c:36:57: warning: integer constant is too large for its type
+     tmp_status->status= OR(tmp_status->status.getStatus,00001000000000000000000000000000);
+                                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel.c:41:5: error: conversion to non-scalar type requested
+     tmp_status->status= AND(tmp_status->status.getStatus,11111110111111111111111111111100);
+     ^~~~~~~~~~
+kernel.c:41:5: error: expected ‘,’ or ‘;’ before ‘tmp_status’
+kernel.c:41:58: warning: integer constant is too large for its type
+     tmp_status->status= AND(tmp_status->status.getStatus,11111110111111111111111111111100);
+                                                          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel.c:42:57: warning: integer constant is too large for its type
+     tmp_status->status= OR(tmp_status->status.getStatus,00001000000000000000000000000000);
+                                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from kernel.c:3:
+kernel.c:54:15: error: redeclaration of ‘ready_queue’ with no linkage
+     LIST_HEAD(ready_queue);
+               ^~~~~~~~~~~
+include/listx.h:78:19: note: in definition of macro ‘LIST_HEAD’
+  struct list_head name = LIST_HEAD_INIT(name)
+                   ^~~~
+kernel.c:53:22: note: previous declaration of ‘ready_queue’ was here
+     struct list_head ready_queue;
+                      ^~~~~~~~~~~
+kernel.c:56:10: error: expected expression before ‘=’ token
+     QUEUE= ready_queue;
+          ^
+kernel.c:62:25: warning: implicit declaration of function ‘AND’ [-Wimplicit-function-declaration]
+         tmp->p_s.status=AND(tmp->p_s,11111110111111111111111111111101) //virtual memory + kernel mode
+                         ^~~
+kernel.c:62:38: warning: integer constant is too large for its type
+         tmp->p_s.status=AND(tmp->p_s,11111110111111111111111111111101) //virtual memory + kernel mode
+                                      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel.c:62:71: error: expected ‘;’ before ‘tmp’
+       tmp->p_s.status=AND(tmp->p_s,11111110111111111111111111111101) //virtual memory + kernel mode
+                                                                     ^
+                                                                     ;
+       tmp->p_s.status=OR(tmp->p_s,00001000000000000000000000000001)  //local timer
+       ~~~                                                            
+
+kernel.c:63:37: warning: integer constant is too large for its type
+         tmp->p_s.status=OR(tmp->p_s,00001000000000000000000000000001)  //local timer
+                                     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+kernel.c:66:17: error: ‘state_t’ {aka ‘struct state’} has no member named ‘reg’
+         tmp->p_s.reg[26]=RAMTOP-FRAMESIZE*i
+                 ^
+kernel.c:66:33: error: ‘FRAMESIZE’ undeclared (first use in this function)
+         tmp->p_s.reg[26]=RAMTOP-FRAMESIZE*i
+                                 ^~~~~~~~~
+kernel.c:66:44: error: expected ‘;’ before ‘if’
+         tmp->p_s.reg[26]=RAMTOP-FRAMESIZE*i
+                                            ^
+                                            ;
+kernel.c:68:9:
+         if(i==1)  tmp->p_s.pc_epc=(memaddr) test1;
+         ~~                                  
+kernel.c:73:25: error: incompatible type for argument 1 of ‘insertProcQ’
+             insertProcQ(ready_queue, tmp);
+                         ^~~~~~~~~~~
+In file included from kernel.c:6:
+include/pcb.h:14:36: note: expected ‘struct list_head *’ but argument is of type ‘struct list_head’
+ void insertProcQ(struct list_head *head, pcb_t *p);
+                  ~~~~~~~~~~~~~~~~~~^~~~
+kernel.c:78:18: error: too few arguments to function ‘removeProcQ’
+     pcb_t* proc= removeProcQ();
+                  ^~~~~~~~~~~
+In file included from kernel.c:6:
+include/pcb.h:17:8: note: declared here
+ pcb_t *removeProcQ(struct list_head *head);
+        ^~~~~~~~~~~
+kernel.c:79:20: error: expected expression before ‘=’ token
+     PROCESSO_ATTIVO=proc;
+                    ^
+kernel.c:81:14: error: incompatible type for argument 1 of ‘LDST’
+     LDST(proc->p_s);    //carichiamo le info del processo che voglio eseguire dentro il processore
+          ~~~~^~~~~
+In file included from kernel.c:4:
+/usr/local/include/umps2/umps/libumps.h:150:36: note: expected ‘void *’ but argument is of type ‘state_t’ {aka ‘struct state’}
+ extern unsigned int LDST(STATE_PTR statep);
+                                    ^

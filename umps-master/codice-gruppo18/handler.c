@@ -1,9 +1,9 @@
-#include "p15test_rikaya_v0.c"
-#include "const.h"
-#include "listx.h"
-#include <libumps.h>
-#include "types.h"
-#include "pcb.h"
+#include "include/p15test_rikaya_v0.h"
+#include "include/const.h"
+#include "include/listx.h"
+#include <umps/libumps.h>
+#include <umps/types.h>
+#include "include/pcb.h"
 
 void interrupt_handler(){
     proc=PROCESSO_ATTIVO;
