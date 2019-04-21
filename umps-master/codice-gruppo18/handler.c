@@ -1,42 +1,40 @@
 #include "include/handler.h"
-pcb_t* proc=PROCESSO_ATTIVO;
+
 
 void interrupt_handler(){
-    
+    pcb_t* proc = getPROC();
     //log dei content switch -> (int process) fa riferimento al numero del test
     log_process_order(proc->original_priority);    
 
     //FASE DI AGING 
     /*modifico la priorità*/
-    pcb_t* temp = testa->p_next;
-    while(temp->p_next != NULL){
-        temp->priority = (temp->priority + 1);
-        temp = temp->p_next;
-    }
+    struct list_head* testa = getCODA();
 
-    proc->priority = proc->original_priority;
+    aging();
+
     insertProcQ(testa, proc);
-
-
-    pcb_t* proc= removeProcQ();
-    PROCESSO_ATTIVO=proc;
+    
+    proc = removeProcQ(testa);
+    PROCESSO_ATTIVO = proc;
     setTIMER(TIME_SLICE);
-    LDST(&(proc->p_s); 
+    LDST(&(proc->p_s)); 
 
      //resetto il timer
 	setTIMER(3000);
 }
 
 void systemcall_handler(){
+    pcb_t* proc = getPROC();
+     struct list_head* testa=getCODA();
     //Cause.ExcCode (SYS=8, BP=9)
-    proc=PROCESSO_ATTIVO;
+    proc = PROCESSO_ATTIVO;
 
-    if(proc->p_s.cause==8){ //SYS
+    if(proc->p_s.cause == 8){ //SYS
         freePcb(proc);
-        pcb_t* proc= removeProcQ(&testa);
+        pcb_t* proc= removeProcQ(testa);
         PROCESSO_ATTIVO=proc;
         setTIMER(TIME_SLICE);
-        LDST(&(proc->p_s); 
+        LDST(&(proc->p_s)); 
 
         //resetto il timer
         setTIMER(3000);

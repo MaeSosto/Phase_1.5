@@ -4,24 +4,25 @@
 #include <umps/libumps.h>
 #include <umps/types.h>
 #include "include/pcb.h"
-#include "include/handler.h"
+#include "utils.c"
 
 #define SYSCALL_NEWAREA 0x200003D4
 #define TRAP_NEWAREA 0x200002BC
 #define TLB_NEWAREA 0x20000230
 #define INTERRUPT_NEWAREA 0x2000008C
 
-pcb_t* PROCESSO_ATTIVO; /*var globale che accede al processo in esecuzione*/
 
 #define ANDBIT_STATE 0xFEFFFFFC
 #define ORBIT_STATE 0x8000000
 #define ANDBIT_PCB 0xFEFFFFFD
 #define ORBIT_PCB 0x8000001
-// #define TIME_SLICE 3000
+#define TIME_SLICE 3000
 #define FRAMESIZE 1024
 
-LIST_HEAD(ready_queue);
-
+void interrupt_handler();
+void systemcall_handler();
+void tlb_handler();
+void trap_handler();
 
 void main	(int argc, char * argv[]){
 
@@ -49,6 +50,8 @@ void main	(int argc, char * argv[]){
 
 
     /*Inizializzare strutture dati di Phase1*/
+    LIST_HEAD(ready_queue);
+    setCODA(ready_queue);
     initPcbs(); //inizializziamo la pcbFree
         
 
@@ -79,7 +82,7 @@ void main	(int argc, char * argv[]){
 
     //PRENDO IL PRIMO PROCESSO IN CODA E LO CARICO NEL PROCESSORE
     pcb_t* proc= removeProcQ(&ready_queue);
-    PROCESSO_ATTIVO=proc;
+    setPROC(proc);
     setTIMER(TIME_SLICE);
     LDST(&(proc->p_s));    // - carichiamo le info del processo che voglio eseguire dentro il processore
     

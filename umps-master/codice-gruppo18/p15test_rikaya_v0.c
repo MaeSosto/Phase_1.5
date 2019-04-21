@@ -1,9 +1,9 @@
-#include <include/const.h>
-#include <include/listx.h>
-#include <src/support/libumps/libumps.h>
-#include <src/include/umps/arch.h>
-#include <include/pcb.h>
+#include "include/const.h"
+#include "include/listx.h"
+#include <umps/libumps.h>
+#include <umps/arch.h>
 
+#include "include/pcb.h"
 
 #define TRANSMITTED 5
 #define TRANSTATUS 2
@@ -231,4 +231,3 @@ void test3()
     termprint("\n", 0);
     SYSCALL(SYS3, 0, 0, 0);
 }
-

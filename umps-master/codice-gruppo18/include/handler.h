@@ -6,12 +6,12 @@
 #include <umps/libumps.h>
 #include <umps/types.h>
 #include "pcb.h"
+#include "types_rikaya.h"
+#include "kernel.c"
 
 void interrupt_handler();
 void systemcall_handler();
 void tlb_handler();
 void trap_handler();
-
-#define TIME_SLICE 3000 
 
 #endif

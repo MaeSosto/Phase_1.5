@@ -1,79 +1,29 @@
-sara@cinesca:~/Dropbox/Sistemi operativi/Phase_1.5/umps-master/codice-gruppo18$ make
 mipsel-linux-gnu-gcc -ffreestanding -ansi -mips1 -mfp32 -std=gnu11 -fno-stack-protector -I /usr/local/include/umps2 -I. -Wall   -c -o kernel.o kernel.c
-mipsel-linux-gnu-gcc -ffreestanding -ansi -mips1 -mfp32 -std=gnu11 -fno-stack-protector -I /usr/local/include/umps2 -I. -Wall   -c -o handler.o handler.c
-handler.c: In function ‘interrupt_handler’:
-handler.c:4:5: error: ‘proc’ undeclared (first use in this function)
-     proc=PROCESSO_ATTIVO;
-     ^~~~
-handler.c:4:5: note: each undeclared identifier is reported only once for each function it appears in
-handler.c:4:10: error: ‘PROCESSO_ATTIVO’ undeclared (first use in this function)
-     proc=PROCESSO_ATTIVO;
-          ^~~~~~~~~~~~~~~
-handler.c:5:5: error: ‘testa’ undeclared (first use in this function)
-     testa=QUEUE;
-     ^~~~~
-handler.c:5:11: error: ‘QUEUE’ undeclared (first use in this function)
-     testa=QUEUE;
-           ^~~~~
-handler.c:9:5: warning: implicit declaration of function ‘log_process_order’ [-Wimplicit-function-declaration]
-     log_process_order(proc->original_priority);
-     ^~~~~~~~~~~~~~~~~
-handler.c:14:24: error: invalid operands to binary != (have ‘struct list_head’ and ‘void *’)
-     while(temp->p_next != NULL){
-           ~~~~~~~~~~~~ ^~
-handler.c:16:14: error: incompatible types when assigning to type ‘pcb_t *’ {aka ‘struct pcb_t *’} from type ‘struct list_head’
-         temp = temp->p_next;
+In file included from kernel.c:7:0:
+utils.c: In function ‘aging’:
+utils.c:30:19: warning: initialization from incompatible pointer type [-Wincompatible-pointer-types]
+     pcb_t* temp = CODA->next;
+                   ^~~~
+utils.c:33:14: warning: assignment from incompatible pointer type [-Wincompatible-pointer-types]
+         temp = &temp->p_next;
               ^
-handler.c:23:18: error: too few arguments to function ‘removeProcQ’
-     pcb_t* proc= removeProcQ();
-                  ^~~~~~~~~~~
-In file included from include/handler.h:8,
+mipsel-linux-gnu-gcc -ffreestanding -ansi -mips1 -mfp32 -std=gnu11 -fno-stack-protector -I /usr/local/include/umps2 -I. -Wall   -c -o handler.o handler.c
+In file included from kernel.c:7:0,
+                 from handler.h:10,
                  from handler.c:1:
-include/pcb.h:17:8: note: declared here
- pcb_t *removeProcQ(struct list_head *head);
-        ^~~~~~~~~~~
-handler.c:25:14: error: ‘TIME_SLICE’ undeclared (first use in this function)
-     setTIMER(TIME_SLICE);
-              ^~~~~~~~~~
-handler.c:26:14: error: incompatible type for argument 1 of ‘LDST’
-     LDST(proc->p_s);
-          ~~~~^~~~~
-In file included from include/handler.h:6,
-                 from handler.c:1:
-/usr/local/include/umps2/umps/libumps.h:150:36: note: expected ‘void *’ but argument is of type ‘state_t’ {aka ‘struct state’}
- extern unsigned int LDST(STATE_PTR statep);
-                                    ^
-handler.c: In function ‘systemcall_handler’:
-handler.c:34:5: error: ‘proc’ undeclared (first use in this function)
-     proc=PROCESSO_ATTIVO;
-     ^~~~
-handler.c:34:10: error: ‘PROCESSO_ATTIVO’ undeclared (first use in this function)
-     proc=PROCESSO_ATTIVO;
-          ^~~~~~~~~~~~~~~
-handler.c:35:5: error: ‘testa’ undeclared (first use in this function)
-     testa=QUEUE;
-     ^~~~~
-handler.c:35:11: error: ‘QUEUE’ undeclared (first use in this function)
-     testa=QUEUE;
-           ^~~~~
-handler.c:39:22: error: too few arguments to function ‘removeProcQ’
-         pcb_t* proc= removeProcQ();
-                      ^~~~~~~~~~~
-In file included from include/handler.h:8,
-                 from handler.c:1:
-include/pcb.h:17:8: note: declared here
- pcb_t *removeProcQ(struct list_head *head);
-        ^~~~~~~~~~~
-handler.c:41:18: error: ‘TIME_SLICE’ undeclared (first use in this function)
-         setTIMER(TIME_SLICE);
-                  ^~~~~~~~~~
-handler.c:42:18: error: incompatible type for argument 1 of ‘LDST’
-         LDST(proc->p_s);
-              ~~~~^~~~~
-In file included from include/handler.h:6,
-                 from handler.c:1:
-/usr/local/include/umps2/umps/libumps.h:150:36: note: expected ‘void *’ but argument is of type ‘state_t’ {aka ‘struct state’}
- extern unsigned int LDST(STATE_PTR statep);
-                                    ^
-make: *** [<builtin>: handler.o] Error 1
-sara@cinesca:~/Dropbox/Sistemi operativi/P
+utils.c: In function ‘aging’:
+utils.c:30:19: warning: initialization from incompatible pointer type [-Wincompatible-pointer-types]
+     pcb_t* temp = CODA->next;
+                   ^~~~
+utils.c:33:14: warning: assignment from incompatible pointer type [-Wincompatible-pointer-types]
+         temp = &temp->p_next;
+              ^
+handler.c: In function ‘interrupt_handler’:
+handler.c:18:12: error: redefinition of ‘proc’
+     pcb_t* proc = removeProcQ(testa);
+            ^~~~
+handler.c:5:12: note: previous definition of ‘proc’ was here
+     pcb_t* proc = getPROC();
+            ^~~~
+<builtin>: recipe for target 'handler.o' failed
+make: *** [handler.o] Error 1
