@@ -9,6 +9,7 @@
 #define TIME_SLICE 3000
 
 void interrupt_handler(){
+    addokbuf("STA AVVENENDO UN INTERRUPT \n");
     pcb_t* proc = getPROC();
     struct list_head* testa = getCODA();
 

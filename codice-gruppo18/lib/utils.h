@@ -11,6 +11,6 @@ struct list_head* getCODA();
 void setCODA(struct list_head* coda);
 
 void setAreas();
-void setPCB();
+pcb_t* NEW_PCB(int i);
 
 #endif

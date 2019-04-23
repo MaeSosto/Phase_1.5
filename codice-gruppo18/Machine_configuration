@@ -1,6 +1,6 @@
 {
     "boot": {
-        "core-file": "/home/marti/Dropbox/SO/Phase_1.5_marti/codice-gruppo18/kernel.core.umps",
+        "core-file": "/home/matteo/Dropbox/Sistemi operativi/Phase_1.5_marti/codice-gruppo18/kernel.core.umps",
         "load-core-file": true
     },
     "bootstrap-rom": "/usr/local/share/umps2/coreboot.rom.umps",
@@ -16,7 +16,7 @@
     "num-ram-frames": 64,
     "symbol-table": {
         "asid": 64,
-        "file": "/home/marti/Dropbox/SO/Phase_1.5_marti/codice-gruppo18/kernel.stab.umps"
+        "file": "/home/matteo/Dropbox/Sistemi operativi/Phase_1.5_marti/codice-gruppo18/kernel.stab.umps"
     },
     "tlb-size": 16
 }

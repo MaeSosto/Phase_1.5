@@ -90,8 +90,10 @@ struct list_head {
 */
 static inline void INIT_LIST_HEAD(struct list_head *list)
 {
+    addokbuf("dentro init 1\n");
 	list->next = list;
 	list->prev = list;
+    addokbuf("dentro init2 \n");
 }
 
 /*

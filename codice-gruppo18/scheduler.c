@@ -4,6 +4,7 @@
 #define TIME_SLICE 3000
 
 void Load_New_Proc(){
+    addokbuf("CARICO UN PROCESSO \n");
     struct list_head* ready_queue;
     ready_queue=getCODA();
 
@@ -11,6 +12,7 @@ void Load_New_Proc(){
     setPROC(proc);
 
     setTIMER(TIME_SLICE);
+    addokbuf("settato il time_slice \n");
     LDST(&(proc->p_s));   
 }
 

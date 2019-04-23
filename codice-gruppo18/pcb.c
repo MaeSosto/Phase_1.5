@@ -65,7 +65,9 @@ pcb_t *allocPcb(void){
 /* 4 - 	Inizializza la lista dei PCB, inizializzando l’elemento sentinella. */
 void mkEmptyProcQ(struct list_head *head){
 	//Abbiamo già il puntatore a list_head, quindi usiamo INIT_LIST_HEAD
+	addokbuf("dentro mkEmptyProcQ 1\n");
 	INIT_LIST_HEAD(head);
+	addokbuf("dentro mkEmptyProcQ 2\n");
 }
 
 /* 5 - 	Restituisce TRUE se la lista puntata da head è vuota, FALSE altrimenti. */

@@ -29,7 +29,7 @@ struct list_head* getCODA(){
 }
 
 void setCODA(struct list_head* coda){
-    CODA= coda;
+    CODA = coda;
 }
 
 
@@ -65,28 +65,25 @@ void setAreas(){
     ((state_t*)INTERRUPT_NEWAREA)->status = ((state_t*)INTERRUPT_NEWAREA)->status | STATUS_TE;
     ((state_t*)INTERRUPT_NEWAREA)->reg_sp= RAMTOP;
     ((state_t*)INTERRUPT_NEWAREA)->pc_epc= (memaddr) interrupt_handler;
+    
 }
 
-void setPCB(){
-    for(int i=1; i<4; i=i+1){
-        pcb_t* tmp;
-        tmp->p_s.status= tmp->p_s.status | STATUS_IEp;
-        tmp->p_s.status= tmp->p_s.status | STATUS_TE;
-        tmp->p_s.status= tmp->p_s.status & ~STATUS_KUp;
-        tmp->p_s.status= tmp->p_s.status & ~STATUS_VMp;
-        tmp->p_s.status= tmp->p_s.status & STATUS_IM(1);
-        tmp->original_priority = i;
-        tmp->priority = i;
-        tmp->p_s.reg_sp = RAMTOP-FRAMESIZE * i;
-        
-        if(i==1)  tmp->p_s.pc_epc=(memaddr) test1;
-        if(i==2)  tmp->p_s.pc_epc=(memaddr) test2;
-        if(i==3)  tmp->p_s.pc_epc=(memaddr) test3;
-        tmp = allocPcb();
+pcb_t* NEW_PCB(int i){
+    pcb_t* tmp;
+    tmp = allocPcb();
+    tmp->p_s.status= tmp->p_s.status | STATUS_IEp;
+    tmp->p_s.status= tmp->p_s.status | STATUS_TE;
+    tmp->p_s.status= tmp->p_s.status & ~STATUS_KUp;
+    tmp->p_s.status= tmp->p_s.status & ~STATUS_VMp;
+    tmp->p_s.status= tmp->p_s.status & STATUS_IM(1);
+    tmp->original_priority = i;
+    tmp->priority = i;
+    tmp->p_s.reg_sp = RAMTOP-FRAMESIZE * i;
+    
+    if(i==1)  tmp->p_s.pc_epc=(memaddr) test1;
+    if(i==2)  tmp->p_s.pc_epc=(memaddr) test2;
+    if(i==3)  tmp->p_s.pc_epc=(memaddr) test3;
 
-        if(tmp != NULL){
-            insertProcQ(CODA, tmp);   
-            setCODA(CODA);
-        }  
-    }
+    addokbuf("HO SETTATO IL PCB \n");
+    return tmp;
 }
