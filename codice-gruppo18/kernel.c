@@ -19,11 +19,14 @@
 #define TIME_SLICE 3000
 #define FRAMESIZE 1024
 
+<<<<<<< HEAD:codice-gruppo18/kernel.c
+=======
 void interrupt_handler();
 void systemcall_handler();
 void tlb_handler();
 void trap_handler();
 
+>>>>>>> 3dd5914ff089ccb6f73c4bc2b13b08654a394933:umps-master/codice-gruppo18/kernel.c
 void main	(int argc, char * argv[]){
 
     /*popolazione delle NEW AREAS*/
@@ -50,7 +53,12 @@ void main	(int argc, char * argv[]){
 
 
     /*Inizializzare strutture dati di Phase1*/
+<<<<<<< HEAD:codice-gruppo18/kernel.c
+    struct list_head* ready_queue;
+    mkEmptyProcQ(ready_queue);
+=======
     LIST_HEAD(ready_queue);
+>>>>>>> 3dd5914ff089ccb6f73c4bc2b13b08654a394933:umps-master/codice-gruppo18/kernel.c
     setCODA(ready_queue);
     initPcbs(); //inizializziamo la pcbFree
         
@@ -64,8 +72,7 @@ void main	(int argc, char * argv[]){
         tmp->p_s.status= tmp->p_s.status & ANDBIT_PCB;    //virtual memory + kernel mode
         tmp->p_s.status= tmp->p_s.status | ORBIT_PCB;  //local timer
 
-        //tmp->p_s.status=AND(tmp->p_s,11111110111111111111111111111101) //virtual memory + kernel mode
-        //tmp->p_s.status=OR(tmp->p_s,00001000000000000000000000000001)  //local timer
+        
         tmp->original_priority = i;
         tmp->priority = i;
         tmp->p_s.reg_sp = RAMTOP-FRAMESIZE * i;
@@ -79,11 +86,24 @@ void main	(int argc, char * argv[]){
             insertProcQ(&ready_queue, tmp);     
     }
 
-
-    //PRENDO IL PRIMO PROCESSO IN CODA E LO CARICO NEL PROCESSORE
+    //aggiungere status iniziale processore pizza
+    setSTATUS();
+//comunque si, dovete fare and e or a seconda di quello che serve esattamente come per i pcb e new area
+    
+    00011000000000000
+    
+    
+    
     pcb_t* proc= removeProcQ(&ready_queue);
     setPROC(proc);
     setTIMER(TIME_SLICE);
     LDST(&(proc->p_s));    // - carichiamo le info del processo che voglio eseguire dentro il processore
     
 }
+<<<<<<< HEAD:codice-gruppo18/kernel.c
+   setTIMER(TIME_SLICE);
+    LDST(&(proc->p_s));    // - carichiamo le info del processo che voglio eseguire dentro il processore
+    
+}
+=======
+>>>>>>> 3dd5914ff089ccb6f73c4bc2b13b08654a394933:umps-master/codice-gruppo18/kernel.c
