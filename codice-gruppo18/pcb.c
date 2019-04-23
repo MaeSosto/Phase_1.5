@@ -5,7 +5,7 @@
 /* File: pcb.c		 	    */
 /************************************/
 
-#include "include/pcb.h"
+#include "pcb.h"
 
 HIDDEN LIST_HEAD(pcbFree_h); //Macro di listx.h: inizializza la sentinella alla pcbFree. pcbFree_h è la sentinella della coda di pcb
 HIDDEN pcb_t pcbFree_table[MAXPROC];	//Array statico contenente MAX_PROC pcb_t

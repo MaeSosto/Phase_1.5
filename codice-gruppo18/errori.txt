@@ -1,0 +1,220 @@
+mipsel-linux-gnu-gcc -mips1 -mfp32 -std=gnu11 -w -I /usr/local/include/umps2 -c kernel.c
+In file included from kernel.c:1,
+                 from handler.h:10,
+                 from kernel.c:9:
+p15test_rikaya_v0.c:31:5: error: redefinition of ‘test1_baton’
+ int test1_baton[STEPS + 1] = {0};
+     ^~~~~~~~~~~
+In file included from kernel.c:1:
+p15test_rikaya_v0.c:31:5: note: previous definition of ‘test1_baton’ was here
+ int test1_baton[STEPS + 1] = {0};
+     ^~~~~~~~~~~
+In file included from kernel.c:1,
+                 from handler.h:10,
+                 from kernel.c:9:
+p15test_rikaya_v0.c:32:5: error: redefinition of ‘test2_baton’
+ int test2_baton[STEPS + 1] = {0};
+     ^~~~~~~~~~~
+In file included from kernel.c:1:
+p15test_rikaya_v0.c:32:5: note: previous definition of ‘test2_baton’ was here
+ int test2_baton[STEPS + 1] = {0};
+     ^~~~~~~~~~~
+In file included from kernel.c:1,
+                 from handler.h:10,
+                 from kernel.c:9:
+p15test_rikaya_v0.c:33:5: error: redefinition of ‘test3_baton’
+ int test3_baton[STEPS + 1] = {0};
+     ^~~~~~~~~~~
+In file included from kernel.c:1:
+p15test_rikaya_v0.c:33:5: note: previous definition of ‘test3_baton’ was here
+ int test3_baton[STEPS + 1] = {0};
+     ^~~~~~~~~~~
+In file included from kernel.c:1,
+                 from handler.h:10,
+                 from kernel.c:9:
+p15test_rikaya_v0.c:35:6: error: redefinition of ‘gantt_diagram’
+ char gantt_diagram[GANTT_SIZE] = {0};
+      ^~~~~~~~~~~~~
+In file included from kernel.c:1:
+p15test_rikaya_v0.c:35:6: note: previous definition of ‘gantt_diagram’ was here
+ char gantt_diagram[GANTT_SIZE] = {0};
+      ^~~~~~~~~~~~~
+In file included from kernel.c:1,
+                 from handler.h:10,
+                 from kernel.c:9:
+p15test_rikaya_v0.c:39:21: error: redefinition of ‘get_microseconds’
+ static unsigned int get_microseconds()
+                     ^~~~~~~~~~~~~~~~
+In file included from kernel.c:1:
+p15test_rikaya_v0.c:39:21: note: previous definition of ‘get_microseconds’ was here
+ static unsigned int get_microseconds()
+                     ^~~~~~~~~~~~~~~~
+In file included from kernel.c:1,
+                 from handler.h:10,
+                 from kernel.c:9:
+p15test_rikaya_v0.c:44:13: error: redefinition of ‘delay_ms’
+ static void delay_ms(unsigned int ms)
+             ^~~~~~~~
+In file included from kernel.c:1:
+p15test_rikaya_v0.c:44:13: note: previous definition of ‘delay_ms’ was here
+ static void delay_ms(unsigned int ms)
+             ^~~~~~~~
+In file included from kernel.c:1,
+                 from handler.h:10,
+                 from kernel.c:9:
+p15test_rikaya_v0.c:57:8: error: redefinition of ‘termstat’
+ devreg termstat(memaddr *stataddr)
+        ^~~~~~~~
+In file included from kernel.c:1:
+p15test_rikaya_v0.c:57:8: note: previous definition of ‘termstat’ was here
+ devreg termstat(memaddr *stataddr)
+        ^~~~~~~~
+In file included from kernel.c:1,
+                 from handler.h:10,
+                 from kernel.c:9:
+p15test_rikaya_v0.c:64:14: error: redefinition of ‘termprint’
+ unsigned int termprint(char *str, unsigned int term)
+              ^~~~~~~~~
+In file included from kernel.c:1:
+p15test_rikaya_v0.c:64:14: note: previous definition of ‘termprint’ was here
+ unsigned int termprint(char *str, unsigned int term)
+              ^~~~~~~~~
+In file included from kernel.c:1,
+                 from handler.h:10,
+                 from kernel.c:9:
+p15test_rikaya_v0.c:127:6: error: redefinition of ‘addokbuf’
+ void addokbuf(char *strp)
+      ^~~~~~~~
+In file included from kernel.c:1:
+p15test_rikaya_v0.c:127:6: note: previous definition of ‘addokbuf’ was here
+ void addokbuf(char *strp)
+      ^~~~~~~~
+In file included from kernel.c:1,
+                 from handler.h:10,
+                 from kernel.c:9:
+p15test_rikaya_v0.c:135:6: error: redefinition of ‘adderrbuf’
+ void adderrbuf(char *strp)
+      ^~~~~~~~~
+In file included from kernel.c:1:
+p15test_rikaya_v0.c:135:6: note: previous definition of ‘adderrbuf’ was here
+ void adderrbuf(char *strp)
+      ^~~~~~~~~
+In file included from kernel.c:1,
+                 from handler.h:10,
+                 from kernel.c:9:
+p15test_rikaya_v0.c:143:6: error: redefinition of ‘log_process_order’
+ void log_process_order(int process) {
+      ^~~~~~~~~~~~~~~~~
+In file included from kernel.c:1:
+p15test_rikaya_v0.c:143:6: note: previous definition of ‘log_process_order’ was here
+ void log_process_order(int process) {
+      ^~~~~~~~~~~~~~~~~
+In file included from kernel.c:1,
+                 from handler.h:10,
+                 from kernel.c:9:
+p15test_rikaya_v0.c:152:7: error: redefinition of ‘toprint’
+ char *toprint[] = {
+       ^~~~~~~
+In file included from kernel.c:1:
+p15test_rikaya_v0.c:152:7: note: previous definition of ‘toprint’ was here
+ char *toprint[] = {
+       ^~~~~~~
+In file included from kernel.c:1,
+                 from handler.h:10,
+                 from kernel.c:9:
+p15test_rikaya_v0.c:173:6: error: redefinition of ‘test1’
+ void test1()
+      ^~~~~
+In file included from kernel.c:1:
+p15test_rikaya_v0.c:173:6: note: previous definition of ‘test1’ was here
+ void test1()
+      ^~~~~
+In file included from kernel.c:1,
+                 from handler.h:10,
+                 from kernel.c:9:
+p15test_rikaya_v0.c:193:6: error: redefinition of ‘test2’
+ void test2()
+      ^~~~~
+In file included from kernel.c:1:
+p15test_rikaya_v0.c:193:6: note: previous definition of ‘test2’ was here
+ void test2()
+      ^~~~~
+In file included from kernel.c:1,
+                 from handler.h:10,
+                 from kernel.c:9:
+p15test_rikaya_v0.c:213:6: error: redefinition of ‘test3’
+ void test3()
+      ^~~~~
+In file included from kernel.c:1:
+p15test_rikaya_v0.c:213:6: note: previous definition of ‘test3’ was here
+ void test3()
+      ^~~~~
+In file included from kernel.c:8,
+                 from handler.h:10,
+                 from kernel.c:9:
+utils.c:8:8: error: redefinition of ‘PROCESSO_ATTIVO’
+ pcb_t* PROCESSO_ATTIVO= NULL;
+        ^~~~~~~~~~~~~~~
+In file included from kernel.c:8:
+utils.c:8:8: note: previous definition of ‘PROCESSO_ATTIVO’ was here
+ pcb_t* PROCESSO_ATTIVO= NULL;
+        ^~~~~~~~~~~~~~~
+In file included from kernel.c:8,
+                 from handler.h:10,
+                 from kernel.c:9:
+utils.c:10:8: error: redefinition of ‘getPROC’
+ pcb_t* getPROC(){
+        ^~~~~~~
+In file included from kernel.c:8:
+utils.c:10:8: note: previous definition of ‘getPROC’ was here
+ pcb_t* getPROC(){
+        ^~~~~~~
+In file included from kernel.c:8,
+                 from handler.h:10,
+                 from kernel.c:9:
+utils.c:14:6: error: redefinition of ‘setPROC’
+ void setPROC(pcb_t* proc){
+      ^~~~~~~
+In file included from kernel.c:8:
+utils.c:14:6: note: previous definition of ‘setPROC’ was here
+ void setPROC(pcb_t* proc){
+      ^~~~~~~
+In file included from kernel.c:8,
+                 from handler.h:10,
+                 from kernel.c:9:
+utils.c:18:19: error: redefinition of ‘getCODA’
+ struct list_head* getCODA(){
+                   ^~~~~~~
+In file included from kernel.c:8:
+utils.c:18:19: note: previous definition of ‘getCODA’ was here
+ struct list_head* getCODA(){
+                   ^~~~~~~
+In file included from kernel.c:8,
+                 from handler.h:10,
+                 from kernel.c:9:
+utils.c:22:6: error: redefinition of ‘setCODA’
+ void setCODA(struct list_head* coda){
+      ^~~~~~~
+In file included from kernel.c:8:
+utils.c:22:6: note: previous definition of ‘setCODA’ was here
+ void setCODA(struct list_head* coda){
+      ^~~~~~~
+In file included from kernel.c:8,
+                 from handler.h:10,
+                 from kernel.c:9:
+utils.c:27:6: error: redefinition of ‘aging’
+ void aging(){
+      ^~~~~
+In file included from kernel.c:8:
+utils.c:27:6: note: previous definition of ‘aging’ was here
+ void aging(){
+      ^~~~~
+kernel.c:30:6: error: redefinition of ‘main’
+ void main (int argc, char * argv[]){
+      ^~~~
+In file included from handler.h:10,
+                 from kernel.c:9:
+kernel.c:30:6: note: previous definition of ‘main’ was here
+ void main (int argc, char * argv[]){
+      ^~~~
+make: *** [Makefile:57: kernel.o] Error 1

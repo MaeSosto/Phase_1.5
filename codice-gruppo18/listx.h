@@ -259,7 +259,7 @@ static inline struct list_head *list_prev(const struct list_head *current)
     head: inizio della lista (elemento sentinella)
     member: nome del campo contenente la list_head
 */
-#define list_for_each_entry(pos, head, member)                          \
+#define list_for_each_entry(pos, head, member)                         \
 	for (pos = container_of((head)->next, typeof(*pos), member);      \
 	&pos->member != (head);        \
 	pos = container_of(pos->member.next, typeof(*pos), member))

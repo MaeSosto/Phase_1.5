@@ -1,4 +1,4 @@
-#include "include/handler.h"
+#include "handler.h"
 
 #define OLD_AREA_SYS 0x2000348
 #define TIME_SLICE 3000
@@ -14,7 +14,7 @@ void interrupt_handler(){
     insertProcQ(testa, proc);
     
     if(emptyProcQ(testa)){
-        HALT()
+        HALT();
     }
     else{
         proc = removeProcQ(testa);
@@ -34,7 +34,7 @@ void systemcall_handler(){
     if(CAUSE_GET_EXCCODE(old_area->cause)==8){ //allora avviene una sys
         if(old_area->reg_a3==3){ //allora è stata sollevata SYS3
             if(emptyProcQ(testa)){
-                HALTED();
+                HALT();
             }
             else{
                 

@@ -1,10 +1,12 @@
 #include "p15test_rikaya_v0.c"
-#include "include/const.h"
-#include "include/listx.h"
+#include "const.h"
+#include "listx.h"
 #include <umps/libumps.h>
 #include <umps/types.h>
-#include "include/pcb.h"
+#include <umps/cp0.h>
+#include "pcb.h"
 #include "utils.c"
+#include "handler.h"
 
 #define SYSCALL_NEWAREA 0x200003D4
 #define TRAP_NEWAREA 0x200002BC
@@ -19,10 +21,6 @@
 #define TIME_SLICE 3000
 #define FRAMESIZE 1024
 
-void interrupt_handler();
-void systemcall_handler();
-void tlb_handler();
-void trap_handler();
 
 
 void main	(int argc, char * argv[]){
@@ -53,7 +51,7 @@ void main	(int argc, char * argv[]){
     /*Inizializzare strutture dati di Phase1*/
     struct list_head* ready_queue;
     mkEmptyProcQ(ready_queue);
-    LIST_HEAD(ready_queue);
+    
     setCODA(ready_queue);
     initPcbs(); //inizializziamo la pcbFree
         
@@ -78,26 +76,19 @@ void main	(int argc, char * argv[]){
         tmp = allocPcb();
 
         if(tmp != NULL)
-            insertProcQ(&ready_queue, tmp);     
+            insertProcQ(ready_queue, tmp);     
     }
 
-    //aggiungere status iniziale processore pizza
-    setSTATUS();
-//comunque si, dovete fare and e or a seconda di quello che serve esattamente come per i pcb e new area
+    //aggiungere status iniziale processore
+    setSTATUS(getSTATUS() | STATUS_TE | STATUS_IEc | STATUS_IM(1));
+
     
-    //00011000000000000
-    
-    
-    
-    pcb_t* proc= removeProcQ(&ready_queue);
+    pcb_t* proc= removeProcQ(ready_queue);
     setPROC(proc);
     setTIMER(TIME_SLICE);
     LDST(&(proc->p_s));    // - carichiamo le info del processo che voglio eseguire dentro il processore
     
 }
 
-   setTIMER(TIME_SLICE);
-    LDST(&(proc->p_s));    // - carichiamo le info del processo che voglio eseguire dentro il processore
-    
-}
+
 
