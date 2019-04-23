@@ -47,35 +47,38 @@ VPATH = $(UMPS2_DATA_DIR)
 
 .PHONY : all clean
 
-all : utils.o pcb.o handler.o kernel.o p15test_rikaya_v0.o kernel.core.umps
-
-kernel.core.umps : kernel
-	umps2-elf2umps -k $<
+all : utils.o scheduler.o pcb.o handler.o kernel.o p15test_rikaya_v0.o kernel.core.umps
 
 ##mipsel-linux-gnu-gcc -ansi -mips1 -mfp32 -std=gnu11 -fno-stack-protector -I /usr/local/include/umps2 -c kernel.c
 kernel.o : kernel.c
 	$(CC) $(CC_FLAGS) $<
      
-pcb.o : pcb.c pcb.h
+pcb.o : pcb.c lib/pcb.h
 	$(CC) $(CC_FLAGS) $<
 	
 p15test_rikaya_v0.o : p15test_rikaya_v0.c
 	$(CC) $(CC_FLAGS) $<
 
-handler.o : handler.c handler.h
+handler.o : handler.c lib/handler.h
 	$(CC) $(CC_FLAGS) $<
 
-utils.o : utils.c
+utils.o : utils.c lib/utils.h
 	$(CC) $(CC_FLAGS) $<
-	
+
+scheduler.o : scheduler.c lib/scheduler.h
+	$(CC) $(CC_FLAGS) $<
+
 #mipsel-linux-gnu-ld -o kernel pcb.o handler.o p15test_rikaya_v0.o kernel.o /usr/local/lib/umps2/crtso.o
 # /usr/local/lib/umps2/libumps.o -nostdlib -G0 -T /usr/local/share/umps2/umpscore.ldscript
-kernel : kernel.o 
+kernel : kernel.o pcb.o handler.o scheduler.o p15test_rikaya_v0.o utils.o
 	$(LD) -o $@ $^ $(CRTSO_PATH) $(LIBUMPS_PATH) $(LDFLAGS)
 
 clean :
 	-rm -f *.o kernel kernel.*.umps
 
+kernel.core.umps : kernel
+	umps2-elf2umps -k $<
+
 # Pattern rule for assembly modules
-%.o : %.S
-	$(CC) $(CFLAGS) -c -o $@ $<
+#%.o : %.S
+#	$(CC) $(CFLAGS) -c -o $@ $<

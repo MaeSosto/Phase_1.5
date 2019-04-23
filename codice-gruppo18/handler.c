@@ -1,4 +1,9 @@
-#include "handler.h"
+#include "lib/scheduler.h"
+#include "lib/utils.h"
+#include "lib/pcb.h"
+#include <umps/cp0.h>
+#include "lib/p15test_rikaya_v0.h"
+
 
 #define OLD_AREA_SYS 0x2000348
 #define TIME_SLICE 3000
@@ -9,18 +14,15 @@ void interrupt_handler(){
 
     log_process_order(proc->original_priority);    
  
-    aging();
-    proc=getPROC();
+    Aging();
     insertProcQ(testa, proc);
-    
+    setCODA(testa);
+
     if(emptyProcQ(testa)){
         HALT();
     }
     else{
-        proc = removeProcQ(testa);
-        setPROC(proc);
-        setTIMER(TIME_SLICE);
-        LDST(&(proc->p_s)); 
+        Load_New_Proc();
     }
 }
 
@@ -37,15 +39,11 @@ void systemcall_handler(){
                 HALT();
             }
             else{
-                
                 log_process_order(proc->priority);
-                aging();                
+                Aging();                
                 freePcb(proc);
-
-                pcb_t* proc= removeProcQ(testa);
-                setPROC(proc);
-                setTIMER(TIME_SLICE);
-                LDST(&(proc->p_s)); 
+                setCODA(testa);
+                Load_New_Proc();
             }
         }
 
